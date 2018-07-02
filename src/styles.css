@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+body, html {
+    height: 100%;
+}
+
+h4,h2,a
+{
+    text-align: center;
+    font-weight: bold;
+    
+}
+.bg { 
+    /* The image used */
+    background-image: url("images/background.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+h4
+{
+
+}

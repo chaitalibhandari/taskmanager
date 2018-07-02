@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-6">
+        <app-tasks></app-tasks>
+    </div>
+<div class="col-md-4">
+<h4>Add New Task</h4>
+<div class="well well-lg">
+
+    <form [formGroup]="taskForm" (ngSubmit)="onSave()">
+        <div class="form-group">
+            <label>Task Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="taskName"name="taskName" formControlName="taskName">
+
+            <div class="help-block" *ngIf="taskName.touched && taskName.invalid">
+              <div *ngIf="taskName.errors.required" class="alert alert-danger">
+                   Task Name is required.
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="taskDescription">Description <span class="text-danger">*</span></label>
+            <textarea name="taskDescription" 
+                class="form-control"
+                id="taskDescription" 
+                cols="30" 
+                rows="4" formControlName="taskDescription">
+            </textarea>
+            <div class="help-block" *ngIf="taskDescription.touched && taskDescription.invalid">
+                <div *ngIf="taskDescription.errors.required" class="alert alert-danger">
+                    Description is required.
+                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Status <span class="text-danger">*</span></label>
+            <select class="form-control" name="taskstatus" formControlName="taskstatus">
+                <option value="">SELECT AN OPTION</option>
+                <option value="Open">Open</option>
+                <option value="Pending">Pending</option>
+                <option value="Closed">Closed</option>
+                <option value="In-Progress">In-Progress</option>
+            </select>
+            <div class="help-block" *ngIf="taskstatus.touched && taskstatus.invalid">
+                <div *ngIf="taskstatus.errors.required" class="alert alert-danger">
+                    Status is required.
+                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Enter Task Completion Date <span class="text-danger">*</span> </label>
+            <input type="text" class="form-control" id="taskDate"name="taskDate" 
+            formControlName="taskDate" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY' }">
+            <div class="help-block" *ngIf="taskDate.touched && taskDate.invalid">
+                <div *ngIf="taskDate.errors.required" class="alert alert-danger">
+                    Task Completion Date is required.
+                 </div>
+            </div>
+        </div>
+        <button name="save" class="btn btn-primary" [disabled]="taskForm.invalid "> Save</button>
+
+    </form>
+
+    <div class="alert alert-success" *ngIf="showMessage">
+        Task saved successfully!
+    </div>
+</div>
+</div>
+</div>

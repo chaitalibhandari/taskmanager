@@ -1,0 +1,31 @@
+
+<div class="row">
+<div class="col-md-6">
+    <app-tasks></app-tasks>
+</div>
+<div class="col-md-4">
+    <h4>Task Details</h4>
+    <div class="panel panel-primary">
+     
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ task.name }}</h3>
+      </div>
+      <div class="panel-body">
+        <p>{{ task.description }}</p>
+      </div>
+      <ul class="list-group" [ngSwitch]="task.status">
+         
+          <li class="list-group-item" *ngSwitchCase="'Pending'">Status: <span class="label label-primary">{{ task.status }}</span></li>
+          <li class="list-group-item" *ngSwitchCase="'Open'">Status: <span class="label label-danger">{{ task.status }}</span></li>
+          <li class="list-group-item" *ngSwitchCase="'Closed'">Status: <span class="label label-success">{{ task.status }}</span></li>
+          <li class="list-group-item" *ngSwitchCase="'In-Progress'">Status: <span class="label label-warning">{{ task.status }}</span></li>
+          <li class="list-group-item">date: {{ task.date }}</li>
+        
+      </ul>
+    </div>
+    <p>
+      <a class="btn btn-primary" [routerLink]="['/edit', task.id]" >Edit</a>
+    </p>
+</div>
+<div class="col-md-4"></div>
+</div>
